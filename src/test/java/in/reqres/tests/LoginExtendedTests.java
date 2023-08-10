@@ -147,7 +147,7 @@ public class LoginExtendedTests {
     @Test
     void missingPasswordTest() {
         LoginBodyModel authData = new LoginBodyModel();
-        authData.setEmail("eve.holt@reqres.in");
+        authData.setEmail("peter@klaven");
 
         MissingPasswordModel missingPasswordResponse = step("Make request", () ->
                 given(loginRequestSpec)

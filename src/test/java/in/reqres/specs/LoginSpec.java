@@ -32,7 +32,6 @@ public class LoginSpec {
             .log(STATUS)
             .log(BODY)
             .expectStatusCode(400)
-            .expectBody(matchesJsonSchemaInClasspath("schemas/success-login-response-schema.json"))
             .build();
 
     public static RequestSpecification createUserRequestSpec = with()
