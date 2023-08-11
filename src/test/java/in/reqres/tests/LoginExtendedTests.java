@@ -15,7 +15,9 @@ public class LoginExtendedTests {
 
     @Test
     void successfulLoginBadPracticeTest() {
-        String authData = "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }"; // BAD PRACTICE
+        LoginBodyModel authData = new LoginBodyModel();
+        authData.setEmail("eve.holt@reqres.in");
+        authData.setPassword("cityslicka");
 
         LoginResponseModel loginResponse = step("Make request", () ->
                 given(loginRequestSpec)
@@ -44,7 +46,7 @@ public class LoginExtendedTests {
                 .contentType(JSON)
                 .body(authData)
                 .when()
-                .post("https://reqres.in/api/login")
+                .post("/login")
                 .then()
                 .log().status()
                 .log().body()
@@ -67,7 +69,7 @@ public class LoginExtendedTests {
                 .contentType(JSON)
                 .body(authData)
                 .when()
-                .post("https://reqres.in/api/login")
+                .post("/login")
                 .then()
                 .log().status()
                 .log().body()
@@ -90,7 +92,7 @@ public class LoginExtendedTests {
                 .contentType(JSON)
                 .body(authData)
                 .when()
-                .post("https://reqres.in/api/login")
+                .post("/login")
                 .then()
                 .log().status()
                 .log().body()
@@ -113,7 +115,7 @@ public class LoginExtendedTests {
                         .contentType(JSON)
                         .body(authData)
                         .when()
-                        .post("https://reqres.in/api/login")
+                        .post("/login")
                         .then()
                         .log().status()
                         .log().body()
@@ -175,7 +177,7 @@ public class LoginExtendedTests {
                         .contentType(JSON)
                         .body(userData)
                         .when()
-                        .post("https://reqres.in/api/users")
+                        .post("/users")
                         .then()
                         .spec(createUserResponseSpec)
                         .log().status()
